@@ -1,0 +1,16 @@
+﻿@using NidaTech.DadosPublicos.Web.Views.Shared.Components.UnidadeFederacaoChart
+@model UnidadeFederacaoChartViewModel
+@if (Model.UnidadesFederacao.Count > 1)
+{
+    <div id="@ViewBag.IdDiv" class="chart">
+        <div class="chartjs-size-monitor">
+            <div class="chartjs-size-monitor-expand">
+                <div class=""></div>
+            </div>
+            <div class="chartjs-size-monitor-shrink">
+                <div class=""></div>
+            </div>
+        </div>
+        <canvas id="@ViewBag.IdCanvas" height="500" width="2000" style="height: 250px; width: 730px; display: block; " class="chartjs-render-monitor"></canvas>
+    </div>
+}

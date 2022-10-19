@@ -1,0 +1,9 @@
+﻿<nav class="navbar navbar-light navbar-expand-md bg-light navigation-clean">
+    <div class="container">
+        <a class="navbar-brand" href="/">&nbsp; &nbsp;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Menu</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            @await Html.PartialAsync("_Header.LeftNavbar.Public.cshtml")
+            @await Html.PartialAsync("_Header.RightNavbar.Public.cshtml")
+        </div>
+    </div>
+</nav>

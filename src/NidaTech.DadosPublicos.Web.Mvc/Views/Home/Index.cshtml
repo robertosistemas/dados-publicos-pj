@@ -1,0 +1,133 @@
+﻿@using NidaTech.DadosPublicos.Web.Startup
+@using NidaTech.DadosPublicos.Web.Models.Home
+@using NidaTech.DadosPublicos.Web.Views.Shared.Components.PesquisaEmpresas
+@using NidaTech.DadosPublicos.Web.Views.Shared.Components.UnidadeFederacao;
+@model IndexViewModel
+@{
+    Layout = "~/Views/Shared/Layout/Public/_Layout.Public.cshtml";
+    ViewBag.Title = L("HomePage");
+    ViewBag.CurrentPageName = PageNames.Home;
+}
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/libs/chartjs/dist/Chart.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Home/Index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/_Bundles/home-index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+<header class="text-center text-white masthead pesquisar">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h1 class="mb-5">@L("PortalDePesquisas")<br></h1>
+                <h2 class="mb-5"><strong>@L("PessoasJuridicasDoBrasil")</strong><br></h2>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto abp-advanced-search">
+                <form id="UsersSearchForm">
+                    <div class="form-row">
+                        <div class="col-12 col-md-9 mb-2 mb-md-0"><input class="form-control form-control-lg" type="text" id="pesquisarEmpresasInput" name="pesquisarEmpresasInput" placeholder="Pesquise empresa do Brasil pelo nome ou CNPJ"></div>
+                        <div class="col-12 col-md-3"><button class="btn btn-primary btn-block btn-lg" type="button" id="pesquisarEmpresasButton"><i class="fa fa-search"></i>&nbsp;Pesquisar</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div id="pesquisarEmpresasDiv" class="table-responsive py-5" style="display:none">
+            <table id="pesquisarEmpresasTable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>cnpj</th>
+                        <th>Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section class="text-center bg-light features-icons">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                    <div class="d-flex features-icons-icon"><i class="icon-magnifier m-auto text-primary" data-bss-hover-animate="pulse"></i></div>
+                    <h3>Pesquisa Avançada</h3>
+                    <p class="lead mb-0">Acerte no alvo! Filtre por empresas que procura, por cnae, região, natureza jurídica e outros.<br></p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                    <div class="d-flex features-icons-icon"><i class="icon-cloud-download m-auto text-primary" data-bss-hover-animate="pulse"></i></div>
+                    <h3>Prospecção</h3>
+                    <p class="lead mb-0">Podemos te ajudar a encontrar potenciais clientes e baixar a base de dados para prospecção.<br></p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                    <div class="d-flex features-icons-icon"><i class="icon-refresh m-auto text-primary" data-bss-hover-animate="pulse"></i></div>
+                    <h3>Integração API</h3>
+                    <p class="lead mb-0">Automatize os processos da sua empresa, disponibilizamos integração dos nossos dados por meio de API.<br></p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                    <div class="d-flex features-icons-icon"><i class="icon-note m-auto text-primary" data-bss-hover-animate="pulse"></i></div>
+                    <h3>Atualizar Dados</h3>
+                    <p class="lead mb-0">Você pode publicar informações sobre a sua empresa ou atualizar os dados que se encontram no site.<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="showcase">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-lg-6 text-white showcase-text showcase-img d-flex flex-column justify-content-center align-items-center" style="background-image: url(&quot;/img/DadosPJicone.svg&quot;);background-color: #8bcddc;background-position: center center;text-shadow: #23465d 2px 3px 2px;">
+                <h1 class="text-center">Mais de 40 Milhões</h1>
+                <h2 class="text-center">Empresas Ativas</h2>
+            </div>
+            <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+                <h4>Quantidade de empresas em cada estado<br></h4>
+                @await Component.InvokeAsync(typeof(UnidadeFederacaoViewComponent), new { id = "Estados" })
+            </div>
+        </div>
+    </div>
+</section>
+<section class="text-center bg-light testimonials">
+    <div class="container">
+        <h2 class="mb-5">O que&nbsp;<strong>dizem&nbsp;</strong>nossos clientes?</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mx-auto testimonial-item mb-5 mb-lg-0">
+                    <img class="rounded-circle img-fluid mb-3" src="/img/unimed-logotipo.png">
+                    <h5>Unimed - Circuito da Águas</h5>
+                    <p class="font-weight-light mb-0">"É uma ferramenta maravilhosa que usamos para prospectar clientes e tem gerado grandes resultados."</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mx-auto testimonial-item mb-5 mb-lg-0">
+                    <img class="rounded-circle img-fluid mb-3" src="/img/madareli.png">
+                    <h5>Madareli&nbsp;</h5>
+                    <p class="font-weight-light mb-0">"Antes, sempre que precisava emitir uma nota fiscal e só tinha o CNPJ, tinha que ir no site da receita pesquisar."</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mx-auto testimonial-item mb-5 mb-lg-0">
+                    <img class="rounded-circle img-fluid mb-3" src="/img/ml-logotipo.png">
+                    <h5>Mercado Livre</h5>
+                    <p class="font-weight-light mb-0">"Nossa taxa de conversão melhorou ao automatizar o cadastro dos clientes PJ em nossa plataforma."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

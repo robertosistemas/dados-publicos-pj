@@ -1,0 +1,36 @@
+.navbar-brand {
+  background-image: url(/img/DadosPJlogotipo.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgba(0,0,0,0);
+  text-indent: 200px;
+  overflow: hidden;
+  max-width: 290px;
+  height: 50px;
+  min-width: 252px;
+}
+
+header.masthead {
+  padding: 20px;
+  background: rgb(35,70,93);
+  background: linear-gradient(90deg, rgba(35,70,93,1) 0%, rgba(32,158,187,1) 50%, rgba(103,154,23,1) 100%);
+}
+
+header.pesquisar h1 {
+  margin-bottom: 10px!important;
+}
+
+header.pesquisar h2 {
+  margin-bottom: 20px!important;
+}
+
+.call-to-action {
+  padding: 20px 40px 40px;
+  background: rgb(35,70,93);
+  background: linear-gradient(90deg, rgba(35,70,93,1) 0%, rgba(32,158,187,1) 50%, rgba(103,154,23,1) 100%);
+}
+
+.EstadosTable td {
+  font-weight: bold;
+}
+

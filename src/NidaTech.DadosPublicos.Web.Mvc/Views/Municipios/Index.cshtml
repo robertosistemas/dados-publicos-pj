@@ -1,0 +1,90 @@
+﻿@using NidaTech.DadosPublicos.Web.Startup
+@model IEnumerable<NidaTech.DadosPublicos.Services.Dto.Municipio>
+@{
+    ViewBag.CurrentPageName = PageNames.Municipios;
+    Layout = "~/Views/Shared/Layout/Public/_Layout.Public.cshtml";
+    ViewBag.Title = L("Municipios");
+}
+@section scripts
+{
+    <environment names="Development">
+    </environment>
+    <environment names="Staging,Production">
+    </environment>
+}
+<header class="text-center text-white masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h2 class="my-0">@L("PessoasJuridicasDoBrasil")</h2>
+            </div>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="content my-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">Resumo</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Id)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Codigo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Nome)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.QuantidadeEmpresasAtivas)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Id)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Codigo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Nome)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.QuantidadeEmpresasAtivas)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

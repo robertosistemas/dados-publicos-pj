@@ -1,0 +1,36 @@
+{
+    "components": [
+        "grid"
+    ],
+    "minified": "false",
+    "injectables": {
+        "grid": [
+            "Filter",
+            "Page",
+            "Selection",
+            "Sort",
+            "Reorder",
+            "RowDD",
+            "DetailRow",
+            "Toolbar",
+            "Aggregate",
+            "Search",
+            "VirtualScroll",
+            "Edit",
+            "Resize",
+            "CommandColumn",
+            "ContextMenu",
+            "Freeze",
+            "ColumnMenu",
+            "ColumnChooser",
+            "ForeignKey",
+            "InfiniteScroll"
+        ]
+    },
+    "themes": [
+        "bootstrap"
+    ],
+    "version": "18.4.30",
+    "name": "ej2-grid",
+    "isMinified": false
+}

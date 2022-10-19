@@ -1,0 +1,31 @@
+﻿@using NidaTech.DadosPublicos.Web.Views.Shared.Components.UnidadeFederacao
+@model UnidadeFederacaoViewModel
+@if (Model.UnidadesFederacao.Count > 1)
+{
+    <div id="@ViewBag.IdDiv" class="table-responsive">
+        <table id="@ViewBag.IdTable" class="table table-striped table-bordered">
+            <tbody>
+                @{
+                    var quantidadeItens = ViewBag.EstadosFormatados.Length;
+                    var contaItens = 0;
+                    while (contaItens < quantidadeItens)
+                    {
+                        var contaColunas = 0;
+                        @:<tr>
+                            while (contaItens < quantidadeItens && contaColunas < 6)
+                            {
+                                @:<td align="center">
+                                    @Html.ActionLink(ViewBag.EstadosFormatados[contaItens].Nome as string, "Details", "UnidadesFederacao", new { id = ViewBag.EstadosFormatados[contaItens].Id })
+                                    <br />
+                                    @ViewBag.EstadosFormatados[contaItens].QuantidadeTexto;
+                                @:</td>
+                                contaColunas += 1;
+                                contaItens += 1;
+                            }
+                        @:</tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}
